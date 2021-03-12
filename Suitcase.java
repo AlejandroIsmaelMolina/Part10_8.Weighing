@@ -19,13 +19,10 @@ public class Suitcase {
     }
 
     public int totalWeight() {
-        int summa = 0;    
-        int indeksi = 0;
-        while (indeksi < this.Items.size()) {
-        summa += this.Items.get(indeksi).getWeight();
-        indeksi++;
-        }
-        return summa;
+        int sum = this.Items.stream()
+                .mapToInt(item -> item.getWeight())
+                .reduce(0, (previoustate, value) -> previoustate + value);     
+        return sum;
     }
 
     public void printItems() {

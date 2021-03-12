@@ -26,12 +26,7 @@ public class Suitcase {
     }
 
     public void printItems() {
-        int indeksi = 0;
-        while (indeksi < this.Items.size()) {
-        Item t = this.Items.get(indeksi);
-        System.out.println(t);
-        indeksi++;
-        }
+        this.Items.stream().forEach(item -> System.out.println(item));
     }
 
     public Item heaviestItem() {

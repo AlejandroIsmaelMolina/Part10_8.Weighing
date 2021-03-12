@@ -19,13 +19,10 @@ public class Hold {
     }
 
     public int totalWeight() {
-        int summa = 0;    
-        int indeksi = 0;
-        while (indeksi < this.suitcases.size()) {
-        summa += this.suitcases.get(indeksi).totalWeight();
-        indeksi++;
-        }
-        return summa;
+        int sum = this.suitcases.stream()
+                .mapToInt(suitcase -> suitcase.totalWeight())
+                .reduce(0, (sumo, peso) -> sumo + peso); 
+        return sum;
     }
 
     public void printItems() {
